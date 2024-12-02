@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call([
+            NoteSeeder::class,
+        ]);
+
         User::create([
             'name' => 'kirakira4141',
             'email' => 'kirakira4141@gmail.com',
