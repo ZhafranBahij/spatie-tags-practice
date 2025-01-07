@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Note') }}</div>
-
                 <div class="card-body">
+                    <a class="btn btn-primary btn-sm mb-2" href="{{ route('note.create') }}">Create</a>
                     <table class="table">
                         <thead>
                           <tr>

@@ -22,6 +22,7 @@
                           <input type="text" class="form-control" id="title" aria-describedby="title" name="title" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <a class="btn btn-secondary" href="{{ route('note.index') }}">Back</a>
                     </form>
                 </div>
             </div>

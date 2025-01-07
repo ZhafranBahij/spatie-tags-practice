@@ -31,9 +31,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if (Route::has('note'))
+                        @if (Route::has('home'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('note') }}">{{ __('Note') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            </li>
+                        @endif
+                        @if (Route::has('note.index'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('note.index') }}">{{ __('Note') }}</a>
                             </li>
                         @endif
                     </ul>
