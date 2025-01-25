@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
+use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $datas = Note::query()
+                    ->whereAny(['title', 'description'], 'like', "%{$request->search}%")
                     ->latest()
-                    // ->get()
-                    // ->dd();
                     ->paginate(10);
 
         return view('note.index', compact('datas'));

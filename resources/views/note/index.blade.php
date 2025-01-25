@@ -8,12 +8,18 @@
                 <div class="card-header">{{ __('Note') }}</div>
                 <div class="card-body">
                     <a class="btn btn-primary btn-sm mb-2" href="{{ route('note.create') }}">Create</a>
+                    <form>
+                        {{-- @csrf --}}
+                        <input type="text" name="search" value="{{ request('search') }}" >
+                        <button type="submit">Submit</button>
+                    </form>
                     <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Action</th>
                             <th scope="col">Note</th>
+                            <th scope="col">Description</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -29,6 +35,7 @@
                                         </form>
                                     </td>
                                     <td>{{ $item->title }}</td>
+                                    <td>{{ $item->description }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
