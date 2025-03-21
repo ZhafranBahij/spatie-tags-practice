@@ -14,13 +14,15 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-
-        $datas = Note::query()
-                    ->whereAny(['title', 'description'], 'like', "%{$request->search}%")
+        $data = Note::query()
+                    ->whereAny([
+                        'title',
+                        'description'
+                    ], 'like', "%{$request->search}%")
                     ->latest()
                     ->paginate(10);
 
-        return view('note.index', compact('datas'));
+        return view('note.index', compact('data'));
     }
 
     /**

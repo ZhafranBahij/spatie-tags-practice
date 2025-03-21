@@ -23,7 +23,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($datas as $index => $item)
+                            @foreach ($data as $index => $item)
                                 <tr>
                                     <th scope="row">{{ ++$index }}</th>
                                     <td>
@@ -40,7 +40,7 @@
                             @endforeach
                         </tbody>
                       </table>
-                      {{ $datas->links() }}
+                      {{ $data->links() }}
                 </div>
             </div>
         </div>
