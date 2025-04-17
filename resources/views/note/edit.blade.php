@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">description</label>
-                            <input type="text" class="form-control" id="description" aria-describedby="description" name="description" required>
+                            <input type="text" class="form-control" id="description" aria-describedby="description" name="description" value={{ $data->description }} required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a class="btn btn-secondary" href="{{ route('note.index') }}">Back</a>
