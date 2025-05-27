@@ -21,6 +21,7 @@
                         <th style="width: 50px;">No</th>
                         <th style="width: 160px;">Actions</th>
                         <th>Title</th>
+                        <th>Tags</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -44,6 +45,13 @@
                                 </form>
                             </td>
                             <td>{{ $note->title }}</td>
+                            <td>
+                                <ul>
+                                    @foreach ($note->tags as $tag)
+                                        <li>{{ $tag->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
                             <td>
                                 @if(strlen($note->description) > 69)
                                     {{ Str::limit($note->description, 69) }}

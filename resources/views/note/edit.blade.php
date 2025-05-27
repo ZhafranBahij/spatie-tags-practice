@@ -20,11 +20,15 @@
                         @method('PUT')
                         <div class="mb-3">
                           <label for="title" class="form-label">Title</label>
-                          <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value="{{ $data->title }}" required>
+                          <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value="{{ old('title') ?? $data->title }}" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="description" aria-describedby="description" name="description" value="{{ $data->description }}" required>
+                            <input type="text" class="form-control" id="description" aria-describedby="description" name="description" value="{{ old('description') ?? $data->description }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="tags" aria-describedby="tags" name="tags" value=" @foreach($data->tags as $tag){{ $tag->name }}@if(!$loop->last), @endif @endforeach" required>
                         </div>
                         <a class="btn btn-secondary" href="{{ route('note.index') }}">Back</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -34,4 +38,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        // The DOM element you wish to replace with Tagify
+        var input = document.querySelector('input[name=tags]');
+
+        // initialize Tagify on the above input node reference
+        new Tagify(input)
+    </script>
 @endsection

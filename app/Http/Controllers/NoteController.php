@@ -38,9 +38,18 @@ class NoteController extends Controller
      */
     public function store(StoreNoteRequest $request)
     {
-        // dd($request);
         $validate = $request->validated();
-        Note::create($validate);
+
+        $only_tags = [];
+        foreach (json_decode($validate['tags'], true) as $tag) {
+            $only_tags[] = $tag['value'];
+        }
+
+        $note = Note::create([
+            ...$validate,
+            'tags' => $only_tags,
+        ]);
+
         return to_route('note.index');
     }
 
@@ -59,6 +68,7 @@ class NoteController extends Controller
     public function edit(Note $note)
     {
         $data = $note;
+
         return view('note.edit', compact('data'));
     }
 
@@ -68,7 +78,16 @@ class NoteController extends Controller
     public function update(UpdateNoteRequest $request, Note $note)
     {
         $validate = $request->validated();
-        $note->update($validate);
+
+        $only_tags = [];
+        foreach (json_decode($validate['tags'], true) as $tag) {
+            $only_tags[] = $tag['value'];
+        }
+
+        $note->update([
+            ...$validate,
+            'tags' => $only_tags,
+        ]);
         return to_route('note.index');
     }
 
